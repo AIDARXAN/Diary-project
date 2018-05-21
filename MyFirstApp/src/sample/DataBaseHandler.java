@@ -9,7 +9,7 @@ public class DataBaseHandler extends Configs{
     public Connection getDbConnection()
             throws ClassNotFoundException, SQLException{
 
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             dbConnection = DriverManager.getConnection(dbURL, dbUser, dbPass);
 
 
