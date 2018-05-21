@@ -43,7 +43,7 @@ public class Controller {
             if(!loginText.equals("") && !passwordText.equals(""))
                 loginUser(loginText, passwordText);
             else
-                System.out.println("Login or Password is empty");
+                System.out.println("Login and Password is empty");
         });
 
         LoginSignUpButton.setOnAction((ActionEvent event) -> {
