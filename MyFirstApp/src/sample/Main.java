@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -14,8 +15,12 @@ public class Main extends Application {
         primaryStage.setTitle("TopLevel Diary");
         primaryStage.setScene(new Scene(root, 700, 400));
         primaryStage.setResizable(false);
+        primaryStage.getIcons().add(new Image("file:/home/anonym/IdeaProjects/MyFirstApp/icon1.png"));
         primaryStage.show();
+
     }
+
+
 
 
     public static void main(String[] args) {

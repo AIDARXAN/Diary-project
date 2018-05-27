@@ -7,21 +7,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-image: url('file:D:/IdeaProjects/MyFirstApp/1.gif');" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SignUpController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-image: url('file:/home/anonym/IdeaProjects/MyFirstApp/1.gif');" xmlns="http://javafx.com/javafx/8.0.161" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SignUpController">
     <children>
-        <Label alignment="CENTER" layoutX="-81.0" layoutY="6.0" prefHeight="141.0" prefWidth="897.0" text="TopLevel Diary" textFill="WHITE">
+        <Label alignment="CENTER" layoutX="115.0" layoutY="9.0" prefHeight="141.0" prefWidth="486.0" text="TopLevel Diary" textFill="WHITE">
             <font>
-                <Font name="Avenger" size="55.0" />
+                <Font name="Lobster" size="74.0" />
             </font>
         </Label>
+      <TextField fx:id="name_Register_field" layoutX="50.0" layoutY="165.0" prefHeight="30.0" prefWidth="300.0" promptText="NAME" style="-fx-background-radius: 8; -fx-border-color: #ff0000; -fx-border-radius: 8;" />
+      <TextField fx:id="surname_Register_field" layoutX="380.0" layoutY="165.0" prefHeight="30.0" prefWidth="300.0" promptText="SURNAME" style="-fx-background-radius: 8; -fx-border-color: #ff0000; -fx-border-radius: 8;" />
         <TextField fx:id="login_Register_field" layoutX="50.0" layoutY="230.0" prefHeight="30.0" prefWidth="300.0" promptText="LOGIN" style="-fx-background-radius: 8; -fx-border-color: #ff0000; -fx-border-radius: 8;" />
         <PasswordField fx:id="password_Register_field" layoutX="380.0" layoutY="230.0" prefHeight="30.0" prefWidth="300.0" promptText="PASSWORD" style="-fx-background-radius: 8; -fx-border-color: #ff0000; -fx-border-radius: 8;" />
-        <Label layoutX="245.0" layoutY="115.0" prefHeight="32.0" prefWidth="210.0" text="REGISTER" textFill="#6f6f6f">
+        <Label layoutX="302.0" layoutY="121.0" prefHeight="32.0" prefWidth="151.0" text="REGISTER" textFill="#6f6f6f">
             <font>
-                <Font name="Avenger" size="32.0" />
+                <Font name="Lobster" size="24.0" />
             </font>
         </Label>
-        <Button fx:id="RegisterSignUpButton" layoutX="290.0" layoutY="316.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="136.0" style="-fx-background-radius: 8; -fx-background-insets: 1; -fx-background-color: WHITE; -fx-border-color: RED; -fx-border-radius: 8;" text="Sign Up">
+        <Button fx:id="RegisterSignUpButton" layoutX="541.0" layoutY="300.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="136.0" style="-fx-background-radius: 8; -fx-background-insets: 1; -fx-background-color: WHITE; -fx-border-color: RED; -fx-border-radius: 8;" text="Sign Up">
             <font>
                 <Font name="Lobster" size="16.0" />
             </font>
@@ -31,7 +33,10 @@
                 <Font size="14.0" />
             </font>
         </Label>
-      <TextField fx:id="name_Register_field" layoutX="50.0" layoutY="165.0" prefHeight="30.0" prefWidth="300.0" promptText="NAME" style="-fx-background-radius: 8; -fx-border-color: #ff0000; -fx-border-radius: 8;" />
-      <TextField fx:id="surname_Register_field" layoutX="380.0" layoutY="165.0" prefHeight="30.0" prefWidth="300.0" promptText="SURNAME" style="-fx-background-radius: 8; -fx-border-color: #ff0000; -fx-border-radius: 8;" />
+      <Button fx:id="RegisterBackButton" layoutX="52.0" layoutY="300.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="136.0" style="-fx-background-radius: 8; -fx-background-insets: 1; -fx-background-color: WHITE; -fx-border-color: RED; -fx-border-radius: 8;" text="Back" AnchorPane.bottomAnchor="70.0">
+         <font>
+            <Font name="Lobster" size="16.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>
