@@ -2,6 +2,8 @@ package sample;
 
 import java.io.*;
 import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -10,16 +12,16 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.ClipboardContent;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+
 import javax.swing.*;
 
-public class DiaryController {
+public class DiaryController extends Controller {
     @FXML private ResourceBundle resources;
     @FXML private URL location;
     @FXML private MenuBar MenuBar;
@@ -59,6 +61,10 @@ public class DiaryController {
     @FXML private MenuItem calibri;
     @FXML private MenuItem segeo;
     @FXML private Button save;
+    @FXML private Button search;
+
+    @FXML
+    private Button logOut;
 
     int fontSize = 20;
     public  int getFontSize(){return fontSize;}
@@ -66,6 +72,8 @@ public class DiaryController {
     String font = "Arial";
     public  String getFont(){return font;}
     public void setFont(String ffont){font =ffont;}
+
+    Controller controller = new Controller();
 
     @FXML
     void initialize() {
@@ -111,7 +119,7 @@ public class DiaryController {
                 chooser.setInitialFileName(MenuDate.getValue() +".txt");
                 File selectedFile = chooser.showSaveDialog(stage);
                 FileWriter fileWriter = new FileWriter(selectedFile.getAbsolutePath());
-                fileWriter.write(text_area.getText().toString());
+                fileWriter.write(text_area.getText());
                 fileWriter.close();
             } catch (Exception e) {
                 e.printStackTrace();
@@ -221,20 +229,72 @@ public class DiaryController {
             text_area.setFont(Font.font(getFont(), FontPosture.ITALIC,getFontSize()));
         });
         save.setOnAction(event -> {
-            try{
-                Stage stage = new Stage();
-                FileChooser chooser = new FileChooser();
-                chooser.setTitle("Save File");
-                chooser.setInitialFileName(MenuDate.getValue() +".txt");
-                File selectedFile = chooser.showSaveDialog(stage);
-                FileWriter fileWriter = new FileWriter(selectedFile.getAbsolutePath());
-                fileWriter.write(text_area.getText().toString());
-                fileWriter.close();
-            } catch (Exception e) {
+            addTextToDatabase();
+            Window owner = save.getScene().getWindow();
+            AlertHelper.showAlert(Alert.AlertType.INFORMATION, owner, "Success!",
+                    "Your file successfully saved!");
+        });
+        search.setOnAction(event -> {
+            try {
+                searchingFiles(controller.getLogin, MenuDate.getValue().toString());
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         });
+        logOut.setOnAction(event -> {
+            logOut();
+        });
+    }
 
+    public void logOut() {
+        logOut.getScene().getWindow().hide();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/sample/sample.fxml"));
+        try {
+            loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Parent root = loader.getRoot();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.setTitle("TopLevel Diary");
+        stage.getIcons().add(new Image("file:/home/anonym/IdeaProjects/MyFirstApp/icon2.png"));
+        stage.setResizable(false);
+        stage.show();
+    }
 
+    public void addTextToDatabase() {
+
+        DataBaseHandler dbHandler = new DataBaseHandler();
+
+        String login = controller.getLogin;
+        String textArea = text_area.getText();
+        String date = MenuDate.getValue().toString();
+
+        Text text = new Text(login, textArea, date);
+
+        dbHandler.insertTextFile(text);
+    }
+
+    public void searchingFiles(String loginText, String date) throws SQLException {
+        DataBaseHandler dataBaseHandler = new DataBaseHandler();
+        Text text = new Text();
+        text.setLogin(loginText);
+        text.setDate(date);
+        ResultSet resultSet = dataBaseHandler.searchFileFromDataBase(text);
+        int counter = 0;
+
+        Window owner = search.getScene().getWindow();
+
+        while (resultSet.next()) {
+            counter++;
+            text_area.setText(resultSet.getString("textFiles"));
+        }
+        if(counter == 0) {
+            AlertHelper.showAlert(Alert.AlertType.ERROR, owner, "File not found"
+                    , "File you searching is not found");
+            return;
+        }
     }
 }

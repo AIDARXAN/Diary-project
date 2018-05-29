@@ -1,18 +1,9 @@
 package sample;
 
-/** TODO
- *** Решить проблему с регистрацией *
-
- 1. Выходил текст вслучае одинаковых логинов *
- 2. Убрать кнопку maximise в окне SignUP *
- 3. Сделать базу данных подключаемой к интернету
- 4. Сделать сохранение файлов
- 5. Зашифровать данные
- */
-
 import java.sql.*;
 
 public class DataBaseHandler extends Configs {
+
 
     Connection dbConnection;
 
@@ -25,22 +16,22 @@ public class DataBaseHandler extends Configs {
 
             dbConnection = DriverManager.getConnection(connectionString, dbUser, dbPass);
 
-        }catch (SQLException e){
+        } catch (SQLException e) {
             e.printStackTrace();
-        }catch (ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
         return dbConnection;
 
     }
 
-    public void signUpUser(User user){
+    public void signUpUser(User user) {
         String insert = "INSERT INTO " + Constants.USERS_TABLE + "(" +
                 Constants.USER_FIRSTNAME + "," + Constants.USER_LASTNAME + "," +
                 Constants.USER_LOGIN + "," + Constants.USER_PASSWORD + ")" +
                 "VALUE(?,?,?,?)";
         try {
-            if(!user.getFirstName().equals("") && !user.getLastName().equals("")
+            if (!user.getFirstName().equals("") && !user.getLastName().equals("")
                     && !user.getLogin().equals("") && !user.getPassword().equals("")) {
 
                 PreparedStatement prSt = getDbConnection().prepareStatement(insert);
@@ -58,7 +49,7 @@ public class DataBaseHandler extends Configs {
     }
 
 
-    public ResultSet getUser(User user){
+    public ResultSet getUser(User user) {
         ResultSet resultSet = null;
 
         String select = "SELECT * FROM " + Constants.USERS_TABLE + " WHERE " + Constants.USER_LOGIN + "=? AND "
@@ -76,7 +67,8 @@ public class DataBaseHandler extends Configs {
         return resultSet;
     }
 
-    public ResultSet getLogin(User user){
+
+    public ResultSet getLogin(User user) {
         ResultSet resultSet = null;
 
         String select = "SELECT * FROM " + Constants.USERS_TABLE + " WHERE " + Constants.USER_LOGIN + "=?";
@@ -90,5 +82,42 @@ public class DataBaseHandler extends Configs {
         }
         return resultSet;
     }
-}
 
+    public void insertTextFile(Text text) {
+        String insert = "INSERT INTO " + Constants.TEXTS_TABLE + "(" +
+                Constants.USER_LOGIN + ","  + Constants.TEXT_FILES + "," +
+                Constants.TEXT_DATE + ")" +
+                "VALUE(?,?,?)";
+        try {
+            PreparedStatement prSt = getDbConnection().prepareStatement(insert);
+            prSt.setString(1, text.getLogin());
+            prSt.setString(2, text.getTextFiles());
+            prSt.setString(3, text.getDate());
+
+            prSt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public ResultSet searchFileFromDataBase(Text text) throws SQLException {
+        ResultSet resultSet;
+
+        String verify = "SELECT * FROM " + Constants.TEXTS_TABLE+ " WHERE " + Constants.USER_LOGIN + "=? AND "
+                + Constants.TEXT_DATE + "=?";
+
+
+        PreparedStatement prSt = getDbConnection().prepareStatement(verify);
+
+        prSt.setString(1, text.getLogin());
+        prSt.setString(2, text.getDate());
+
+        resultSet = prSt.executeQuery();
+
+        return resultSet;
+    }
+
+
+
+
+}

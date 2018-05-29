@@ -10,13 +10,11 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.effect.Glow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1070.0" style="-fx-background-image: url('file:/home/anonym/IdeaProjects/MyFirstApp/4.jpg');" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.DiaryController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1070.0" style="-fx-background-image: url('file:/home/anonym/IdeaProjects/MyFirstApp/4.jpg');" xmlns="http://javafx.com/javafx/8.0.161" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.DiaryController">
    <children>
       <MenuBar fx:id="MenuBar" blendMode="SRC_ATOP" prefHeight="25.0" prefWidth="1070.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -48,13 +46,8 @@
           </Menu>
         </menus>
       </MenuBar>
-      <ImageView fitHeight="1086.0" fitWidth="1927.0" layoutX="-77.0" layoutY="31.0" pickOnBounds="true" AnchorPane.leftAnchor="-77.0" AnchorPane.rightAnchor="-780.0" AnchorPane.topAnchor="31.0">
-         <image>
-            <Image url="@assets/4.jpg" />
-         </image>
-      </ImageView>
       <DatePicker fx:id="MenuDate" layoutX="715.0" layoutY="45.0" AnchorPane.topAnchor="46.0" />
-      <TextArea fx:id="text_area" blendMode="LIGHTEN" cacheShape="false" centerShape="false" depthTest="DISABLE" focusTraversable="false" layoutX="7.0" layoutY="93.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.69" prefHeight="594.0" prefWidth="1058.0" promptText="WRITE HERE..." scaleShape="false" style="-fx-text-fill: BLACK;" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="93.0">
+      <TextArea fx:id="text_area" blendMode="LIGHTEN" cacheShape="false" centerShape="false" depthTest="DISABLE" focusTraversable="false" layoutX="7.0" layoutY="93.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" opacity="0.69" prefHeight="575.0" prefWidth="1058.0" promptText="WRITE HERE..." scaleShape="false" style="-fx-text-fill: BLACK;" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="93.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -64,7 +57,7 @@
          <effect>
             <Glow />
          </effect></TextArea>
-      <Button fx:id="save" layoutX="955.0" layoutY="47.0" mnemonicParsing="false" text="Save" />
+      <Button fx:id="save" layoutX="938.0" layoutY="45.0" mnemonicParsing="false" text="Save" />
       <MenuButton fx:id="font_size" layoutX="212.0" layoutY="45.0" mnemonicParsing="false" text="Font Size" wrapText="true">
         <items>
           <MenuItem fx:id="px12" mnemonicParsing="false" text="12px" />
@@ -102,5 +95,7 @@
             <MenuItem fx:id="segeo" mnemonicParsing="false" text="Segeo Script" />
         </items>
       </MenuButton>
+      <Button fx:id="search" layoutX="627.0" layoutY="45.0" mnemonicParsing="false" text="Search" />
+      <Button fx:id="logOut" layoutX="986.0" layoutY="668.0" mnemonicParsing="false" text="Log out" AnchorPane.bottomAnchor="6.0" AnchorPane.rightAnchor="17.0" />
    </children>
 </AnchorPane>

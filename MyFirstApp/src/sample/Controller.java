@@ -38,6 +38,7 @@ public class Controller {
     @FXML
     private Button LoginSignUpButton;
 
+    public static String getLogin;
 
     @FXML
     void initialize() {
@@ -64,8 +65,7 @@ public class Controller {
 
         LoginSignUpButton.setOnAction((ActionEvent event) -> {
             LoginSignUpButton.getScene().getWindow().hide();
-            openNewWindow("/sample/SignUp.fxml");
-
+                openNewWindow("/sample/SignUp.fxml");
         });
     }
     private void loginUser(String loginText, String passwordText) throws SQLException {
@@ -79,6 +79,7 @@ public class Controller {
 
         while(resultSet.next()){
             counter++;
+            getLogin = login_field.getText();
         }
         if (counter >= 1 ){
             LoginLogInButton.getScene().getWindow().hide();
@@ -95,6 +96,8 @@ public class Controller {
             stage.setResizable(true);
             stage.getIcons().add(new Image("file:/home/anonym/IdeaProjects/MyFirstApp/icon1.png"));
             stage.showAndWait();
+
+
         }else {
             Shake userLoginAnimation = new Shake(login_field);
             Shake userPasswordAnimation = new Shake(password_field);
@@ -102,6 +105,7 @@ public class Controller {
             userPasswordAnimation.playAnimation();
         }
     }
+
     public void openNewWindow(String window){
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(window));
@@ -115,7 +119,7 @@ public class Controller {
         stage.setScene(new Scene(root));
         stage.setResizable(false);
         stage.getIcons().add(new Image("file:/home/anonym/IdeaProjects/MyFirstApp/icon1.png"));
-        stage.showAndWait();
+        stage.show();
     }
 
 
