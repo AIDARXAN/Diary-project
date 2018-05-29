@@ -153,7 +153,7 @@ public class DiaryController extends Controller {
             stage.setScene(new Scene(root));
             stage.setTitle("About TopLevel Diary");
             stage.setResizable(false);
-            stage.getIcons().add(new Image("file:/home/anonym/IdeaProjects/MyFirstApp/icon1.png"));
+            stage.getIcons().add(new Image("file:/home/anonym/IdeaProjects/MyFirstApp/icon2.png"));
             stage.show();
         });
         arial.setOnAction(e -> {

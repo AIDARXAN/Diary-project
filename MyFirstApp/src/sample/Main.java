@@ -22,7 +22,7 @@ public class Main extends Application {
         primaryStage.setTitle("TopLevel Diary");
         primaryStage.setScene(new Scene(root, 700, 400));
         primaryStage.setResizable(false);
-        primaryStage.getIcons().add(new Image("file:/home/anonym/IdeaProjects/MyFirstApp/icon1.png"));
+        primaryStage.getIcons().add(new Image("file:/home/anonym/IdeaProjects/MyFirstApp/icon2.png"));
         primaryStage.show();
 
     }

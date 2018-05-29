@@ -81,7 +81,7 @@ public class SignUpController {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("TopLevel Diary");
-            stage.getIcons().add(new Image("file:/home/anonym/IdeaProjects/MyFirstApp/icon1.png"));
+            stage.getIcons().add(new Image("file:/home/anonym/IdeaProjects/MyFirstApp/icon2.png"));
             stage.setResizable(false);
             stage.show();
         });

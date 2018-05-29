@@ -94,7 +94,7 @@ public class Controller {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setResizable(true);
-            stage.getIcons().add(new Image("file:/home/anonym/IdeaProjects/MyFirstApp/icon1.png"));
+            stage.getIcons().add(new Image("file:/home/anonym/IdeaProjects/MyFirstApp/icon2.png"));
             stage.showAndWait();
 
 
@@ -118,7 +118,7 @@ public class Controller {
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
         stage.setResizable(false);
-        stage.getIcons().add(new Image("file:/home/anonym/IdeaProjects/MyFirstApp/icon1.png"));
+        stage.getIcons().add(new Image("file:/home/anonym/IdeaProjects/MyFirstApp/icon2.png"));
         stage.show();
     }
 
